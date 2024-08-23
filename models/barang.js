@@ -2,6 +2,13 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 const Barang = sequelize.define('Barang', {
+  // Note: define id 1 per satu di setiap model dengan tipe data unsignedBigInt(20) karena range bit yang besar dan bisa handle sampai jutaan id, contoh nya seperti di bawah ini
+  id: {
+    type: DataTypes.BIGINT.UNSIGNED,
+    allowNull: false,
+    primaryKey: true,
+    autoIncrement: true, // If the id is auto-incremented
+  },
   nama: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -10,6 +17,7 @@ const Barang = sequelize.define('Barang', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  // Note: Di hapus aja jika sudah ada id sebagai primary key biar tidak bingung untuk foreign key nya
   uid: {
     type: DataTypes.STRING,
     allowNull: false,

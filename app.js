@@ -67,6 +67,7 @@ app.use(cors());
 app.use(express.json());
 
 
+// Note: untuk migrasi table database di pisah mungkin pake migrate.js
 sequelize.authenticate()
   .then(() => console.log('Koneksi database berhasil.'))
   .catch(err => console.error('Gagal terhubung ke database:', err));

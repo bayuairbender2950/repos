@@ -7,7 +7,6 @@ Barang.associate = (models) => {
     Barang.belongsTo(models.Lokasi, { foreignKey: 'lokasiRakId' });
 }
   
-
 Transaksi.associate = (models) => {
     Transaksi.belongsTo(models.Barang, { foreignKey: 'barangId' }); 
     Transaksi.belongsTo(models.Pengguna, { foreignKey: 'penggunaId' }); 

@@ -7,6 +7,10 @@ const { generateRandomBarcode } = require('../utils/barcodeUtils');
 
 exports.getAllBarang = async (req, res) => {
     try {
+      /* 
+        Note: usahakan untuk memberikan limit ketika mengambil seluruh data agar database tidak berkerja lebih banyak dan menyesuaikan pengambilan data.
+              bisa menggunakan pagination jika di inginkan (optional)
+      */
       const barang = await Barang.findAll({
         include: Lokasi, 
       });
@@ -38,6 +42,12 @@ exports.getBarangById = async (req, res) => {
 exports.createBarang = async (req, res) => {
     try {
       
+      // Note: UID jika tidak digunakan tidak perlu harus ada inputan dari req.body.
+      
+      /*
+      Note: Jangan lupa memakai tambahan library seperti Joi untuk implementasi validator agar lebih mudah 
+            dan tidak manual menggunakan if statement karena akan memperkotor dan mempersulit kodingan.
+      */
       const { nama, kategori, uid, barcode, status, lokasiRakId } = req.body;
       if (!nama || !kategori || !uid || !barcode || !status || !lokasiRakId || !harga) {
         return res.status(400).json({ message: 'Semua field harus diisi.' });
