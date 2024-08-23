@@ -7,8 +7,9 @@ const excel = require('exceljs');
 
 exports.getLaporanBarangMasuk = async (req, res) => {
     try {
+      // Note: Tambahkan filter atau query params untuk membatasi jumlah pengambilan excell karna jika data nya banyak maka akan memberatkan mysql.
       const transaksiMasuk = await Transaksi.findAll({
-        where: { jenis: 'Masuk' },
+        where: { jenis: 'Masuk' }, // Note: bisa di limit where bulan sekarang.
         include: [Barang, Pengguna],
       });
   
