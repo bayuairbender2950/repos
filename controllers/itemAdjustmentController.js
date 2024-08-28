@@ -3,7 +3,7 @@ const Transaction = require('../models/transaction');
 
 exports.adjustStock = async (req, res) => {
   try {
-    const { itemId, quantity, reason } = req.body;
+    const { itemId, quantity, reason } = req.body; //
 
     if (!itemId || !quantity || !reason) {
       return res.status(400).json({ message: 'Fields itemId, quantity, and reason must be filled.' });
