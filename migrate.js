@@ -8,7 +8,7 @@ const models = {};
 dotenv.config();  
 
 fs.readdirSync(modelsPath)
-  .filter(file => file.endsWith('.js'))
+  .filter(file => file.endsWith('.js') && file !== 'index.js' && file !== 'associations.js')
   .forEach(file => {
     const model = require(path.join(modelsPath, file));
     models[model.name] = model;

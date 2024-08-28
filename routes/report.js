@@ -5,13 +5,13 @@ const { authorize } = require('../middleware/authMiddleware');
 const { ROLES } = require('../config/constants');
 
 
-router.get('/stock', authorize([ROLES.ADMINISTRATOR, ROLES.LOGISTICIAN]), reportController.getStockReport);
+router.get('/stock', authorize([ROLES.ADMINISTRATOR, ROLES.LOGISTICS]), reportController.getStockReport);
 
 
-router.get('/incoming-goods', authorize([ROLES.ADMINISTRATOR, ROLES.LOGISTICIAN]), reportController.getIncomingGoodsReport);
+router.get('/incoming-goods', authorize([ROLES.ADMINISTRATOR, ROLES.LOGISTICS]), reportController.getIncomingItemsReport);
 
 
-router.get('/outgoing-goods', authorize([ROLES.ADMINISTRATOR, ROLES.LOGISTICIAN]), reportController.getOutgoingGoodsReport);
+router.get('/outgoing-goods', authorize([ROLES.ADMINISTRATOR, ROLES.LOGISTICS]), reportController.getOutgoingItemsReport);
 
 
 
