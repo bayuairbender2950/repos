@@ -1,21 +1,22 @@
-const Barang = require('./barang');
-const Transaksi = require('./transaksi');
-const Pengguna = require('./pengguna');
-const Lokasi = require('./lokasi');
-
-Barang.associate = (models) => {
-    Barang.belongsTo(models.Lokasi, { foreignKey: 'lokasiRakId' });
-}
+module.exports = (models) => {
   
-Transaksi.associate = (models) => {
-    Transaksi.belongsTo(models.Barang, { foreignKey: 'barangId' }); 
-    Transaksi.belongsTo(models.Pengguna, { foreignKey: 'penggunaId' }); 
-}
+  if (models.Item) {
+    models.Item.belongsTo(models.Location, { foreignKey: 'locationShelfId' });
+  }
 
-Pengguna.associate = (models) => {
-    Pengguna.hasMany(models.Transaksi, { foreignKey: 'penggunaId' }); 
-}
+  
+  if (models.Transaction) {
+    models.Transaction.belongsTo(models.Item, { foreignKey: 'itemId' }); 
+    models.Transaction.belongsTo(models.User, { foreignKey: 'userId' }); 
+  }
 
-Lokasi.associate = (models) => {
-    Lokasi.hasMany(models.Barang, { foreignKey: 'lokasiRakId' });
-}
+  
+  if (models.User) {  
+    models.User.hasMany(models.Transaction, { foreignKey: 'userId' }); 
+  }
+
+  
+  if (models.Location) {
+    models.Location.hasMany(models.Item, { foreignKey: 'locationShelfId' });
+  }
+};

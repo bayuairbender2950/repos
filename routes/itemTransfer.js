@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const returController = require('../controllers/returController');
+const itemTransferController = require('../controllers/itemTransferController');
 const { authorize } = require('../middleware/authMiddleware');
 const { ROLES } = require('../config/constants');
 
-// POST /retur - Menambahkan retur baru
-router.post('/', authorize([ROLES.ADMINISTRATOR, ROLES.ADMIN_GUDANG]), returController.createRetur);
+
+router.post('/', authorize([ROLES.ADMINISTRATOR, ROLES.WAREHOUSE_ADMIN]), itemTransferController.transferitem);
 
 module.exports = router;

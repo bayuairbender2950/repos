@@ -16,13 +16,13 @@ exports.authorize = (roles = []) => {
 
       
       if (roles.length && !roles.includes(req.user.role)) {
-        return res.status(403).json({ message: 'Anda tidak memiliki akses.' });
+        return res.status(403).json({ message: 'You do not have access.' });
       }
 
       next();
     } catch (err) {
       console.error(err);
-      res.status(401).json({ message: 'Tidak terautentikasi.' });
+      res.status(401).json({ message: 'Not authenticated.' });
     }
   };
 };

@@ -1,27 +1,20 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const Barang = sequelize.define('Barang', {
-  // Note: define id 1 per satu di setiap model dengan tipe data unsignedBigInt(20) karena range bit yang besar dan bisa handle sampai jutaan id, contoh nya seperti di bawah ini
+const Item = sequelize.define('Item', {
   id: {
     type: DataTypes.BIGINT.UNSIGNED,
     allowNull: false,
     primaryKey: true,
-    autoIncrement: true, // If the id is auto-incremented
+    autoIncrement: true,
   },
-  nama: {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  kategori: {
+  category: {
     type: DataTypes.STRING,
     allowNull: false,
-  },
-  // Note: Di hapus aja jika sudah ada id sebagai primary key biar tidak bingung untuk foreign key nya
-  uid: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
   },
   barcode: {
     type: DataTypes.STRING,
@@ -29,44 +22,44 @@ const Barang = sequelize.define('Barang', {
     unique: true,
   },
   status: {
-    type: DataTypes.ENUM('Normal', 'Bagus', 'Buruk', 'Sangat Buruk'),
+    type: DataTypes.ENUM('Normal', 'Good', 'Bad', 'Very Bad'),
     allowNull: false,
   },
-  lokasiRakId: { 
+  locationShelfId: { 
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  harga: {
+  price: {
     type: DataTypes.DECIMAL(10, 2), 
     allowNull: false,
   },
-  ukuran: {
+  size: {
     type: DataTypes.STRING,
     allowNull: true, 
   },
-  berat: {
+  weight: {
     type: DataTypes.DECIMAL(10, 2), 
     allowNull: true, 
   },
-  tanggalKedaluwarsa: {
+  expirationDate: {
     type: DataTypes.DATE,
     allowNull: true, 
   },
-  nomorSeri: {
+  serialNumber: {
     type: DataTypes.STRING,
     allowNull: true, 
   },
-  stokMinimum: {
+  minimumStock: {
     type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 0, 
   },
-  stokMaksimum: {
+  maximumStock: {
     type: DataTypes.INTEGER,
     allowNull: false,
     defaultValue: 1000, 
   },
 });
 
-module.exports = Barang;
+module.exports = Item;
 require('./associations');

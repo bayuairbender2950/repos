@@ -2,39 +2,39 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 require('./associations'); 
 
-const Transaksi = sequelize.define('Transaksi', {
-  jenis: {
-    type: DataTypes.ENUM('Masuk', 'Keluar'),
+const Transaction = sequelize.define('Transaction', {
+  type: {
+    type: DataTypes.ENUM('In', 'Out'),
     allowNull: false,
   },
-  barangId: { 
+  itemId: { 
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  jumlah: {
+  quantity: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  lokasiId: { 
+  locationShelfId: { 
     type: DataTypes.INTEGER,
     allowNull: true, 
   },
-  penggunaId: { 
+  userId: { 
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  catatan: { 
+  notes: { 
     type: DataTypes.TEXT,
     allowNull: true,
   },
-  lokasiAsalId: { 
+  sourceLocationId: { 
     type: DataTypes.INTEGER,
     allowNull: true, 
   },
-  lokasiTujuanId: { 
+  destinationLocationId: { 
     type: DataTypes.INTEGER,
     allowNull: true, 
   },
 });
 
-module.exports = Transaksi;
+module.exports = Transaction;

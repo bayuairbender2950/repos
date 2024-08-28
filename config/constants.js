@@ -1,8 +1,8 @@
 module.exports = {
     ROLES: {
       ADMINISTRATOR: 'Administrator',
-      ADMIN_GUDANG: 'Admin Gudang',
-      GEOLOGISTIK: 'Geologistik', 
+      WAREHOUSE_ADMIN: 'Warehouse Admin',
+      LOGISTICS: 'Logistics', 
       STAFF: 'Staff',
     }
   };

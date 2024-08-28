@@ -2,8 +2,8 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 const { ROLES } = require('../config/constants');
 
-const Pengguna = sequelize.define('Pengguna', {
-  nama: {
+const User = sequelize.define('User', {
+  name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -17,10 +17,10 @@ const Pengguna = sequelize.define('Pengguna', {
     allowNull: false,
   },
   role: {
-    type: DataTypes.ENUM('Administrator', 'Admin Gudang', 'Geologistik', 'Staff'), 
+    type: DataTypes.ENUM('Administrator', 'Warehouse Admin', 'Geologist', 'Staff'), 
     allowNull: false,
   },
 });
 
-module.exports = Pengguna;
+module.exports = User;
 require('./associations');
